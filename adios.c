@@ -1,7 +1,11 @@
 /* EN ESTE ARCHIVO SE ESCRIBIRÁ LA FUNCIÓN DE ADIOS */
+#include <stdlib.h>
+#include <stdio.h>
 
-in16_t FuncAdios(void){
-    sprintf("ADIOS");
+// typedef int int16_t;
+
+int16_t FuncAdios(void){
+    printf("ADIOS");
     
     return 0;
 }

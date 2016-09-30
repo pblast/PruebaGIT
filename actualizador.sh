@@ -6,7 +6,7 @@ verLocal=$(git tag|tail -1)
 echo "En el servidor: $verRemote"
 echo "En local: $verLocal"
 
-if ["$verLocal"=="$verRemote"]
+if [[ $verLocal == $verRemote ]]
 then
     echo "ESTAMOS AL DIA!!"
 else
