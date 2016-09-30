@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 void main(void){
-    printf("HOLA ESTA YE LA SEGUNDA VERSION\n");
+    printf("HOLA ESTA YE LA TERCERA VERSION\n");
     
     return;
 }
