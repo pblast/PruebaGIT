@@ -1,5 +1,8 @@
+#include <stdio.h>
+#include <stdlib.h>
 
-
-int main(void){
-	
+void main(void){
+    printf("HOLA ESTA YE LA SEGUNDA VERSION\n");
+    
+    return;
 }
