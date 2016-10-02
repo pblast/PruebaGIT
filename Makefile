@@ -99,6 +99,7 @@ gitcommit:
 	$(eval COMMITMSG ?= $(shell bash -c 'read -p "Commit MSG: " msg; echo $$msg'))
 	@git add .
 	@git commit -m "$(COMMITMSG)"
+	@git tag v$(MAJORV).$(MINORV).$(PATCHV)b$(BUILDV)
 	echo Se acabo esto
 
 build: $(TARGET)
