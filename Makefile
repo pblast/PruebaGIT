@@ -1,7 +1,15 @@
 
+#*******************************************************************************
+#    OPCIONES DE PROYECTO
+#*******************************************************************************
 # SALIDA
-TARGET=Prueba1
+TARGET=PruebaGIT
 
+
+
+#*******************************************************************************
+#    GESTIÓN DE DIRECTORIOS / OBJETOS
+#*******************************************************************************
 # DIRECTORIOS
 SRCDIR=src
 INCDIR=inc
@@ -11,16 +19,36 @@ OBJDIR=obj
 SRCS:=$(wildcard $(SRCDIR)/*.c)
 OBJS:=$(SRCS:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
-# COMPILACION
+
+
+#*******************************************************************************
+#    OPCIONES DE COMPILACION
+#*******************************************************************************
+# COMPILADOR
 CC=gcc
-CFLAGS=-Wall -std=c99
-#=-O2 -Wall -Wextra -std=c99
+
+# FLAGS DE COMPILACIÓN
+CFLAGS=-Wall
+CFLAGS+= -std=c90
 CFLAGS+=-I./$(INCDIR)
 
+
+#*******************************************************************************
+#    OPCIONES DE LINKADO
+#*******************************************************************************
 # LINKER
 LINKER   = gcc
-LFLAGS   = -Wall -I. -lm
+
+# FLAGS DE LINKADO
+LFLAGS   = -Wall
+LGLAGS+= -I./$(INCDIR)
+LFLAGS+= -lm
 POSTLFLAGS= -lcurl
+
+
+#*******************************************************************************
+#   REGLAS DE CONTROL DE VERSIÓN
+#*******************************************************************************
 
 # Se lee la versión actual del programa
 MAJORV=$(shell grep -w -m 1 "MAJOR_VER" inc/main.h|grep -o '[0-9]\+')
@@ -28,12 +56,6 @@ MINORV=$(shell grep -w -m 1 "MINOR_VER" inc/main.h|grep -o '[0-9]\+')
 PATCHV=$(shell grep -w -m 1 "PATCH_VER" inc/main.h|grep -o '[0-9]\+')
 BUILDV=$(shell grep -w -m 1 "BUILD_VER" inc/main.h|grep -o '[0-9]\+')
 
-
-all: build buildver
-
-major: build gitcommit majorver
-minor: build minorver
-patch: build patchver
 
 majorver:
 	$(eval sum=$(shell echo $$(( $(MAJORV) +1 ))))
@@ -61,11 +83,25 @@ buildver:
 	$(shell sed -i -E "s/(#define BUILD_VER )[0-9]*/\1${sum}/g" inc/main.h)
 
 
-gitcommit:
-	$(eval COMMITMSG ?= $(shell bash -c 'read -p "Commit MSG: " msg; echo $$pwd'))
-	@echo  $(COMMITMSG)
+#*******************************************************************************
+#    REGLAS DE COMPILACION
+#*******************************************************************************
 
-build: $(TARGET) 
+all: build buildver
+
+major: build gitcommit majorver
+minor: build minorver
+patch: build patchver
+
+
+
+gitcommit:
+	$(shell ls)
+	echo $(shell git add .)
+	echo $(shell git status)
+	echo $(shell git commit -m "$COMMITMSG")
+
+build: $(TARGET)
 
 $(TARGET):$(OBJS)
 	@$(LINKER)  $(LFLAGS) $(OBJS) -o $@ $(POSTLFLAGS)

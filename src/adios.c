@@ -1,8 +1,15 @@
 /* EN ESTE ARCHIVO SE ESCRIBIRÁ LA FUNCIÓN DE ADIOS */
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdint.h>
 
-in16_t FuncAdios(void){
-    sprintf("ADIOS");
-    
+
+#include "adios.h"
+
+
+int16_t FuncAdios(void){
+    printf("ADIOS");
+
     return 0;
 }
 
