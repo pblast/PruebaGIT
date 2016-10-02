@@ -96,12 +96,9 @@ patch: build patchver
 
 
 gitcommit:
-	$(eval COMMITMSG ?= $(shell bash -c 'read -p "Commit MSG: " msg; echo $$pwd'))
-	@echo  $(COMMITMSG)
-	# $(shell git add .)
-	# $(shell git status)
-	# $(shell git commit -m "COMMITMSG")
-
+	$(eval COMMITMSG ?= $(shell bash -c 'read -p "Commit MSG: " msg; echo $$msg'))
+	$(shell git add .)
+	$(shell git commit -m "$(COMMITMSG)")
 build: $(TARGET)
 
 $(TARGET):$(OBJS)
