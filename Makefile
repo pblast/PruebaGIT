@@ -97,8 +97,8 @@ patch: build patchver
 
 gitcommit:
 	$(eval COMMITMSG ?= $(shell bash -c 'read -p "Commit MSG: " msg; echo $$msg'))
-	git add .
-	git commit -m "$(COMMITMSG)"
+	@git add .
+	@git commit -m "$(COMMITMSG)"
 	echo Se acabo esto
 
 build: $(TARGET)
