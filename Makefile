@@ -100,6 +100,7 @@ gitcommit:
 	@git add .
 	@git commit -m "$(COMMITMSG)"
 	@git tag v$(MAJORV).$(MINORV).$(PATCHV)b$(BUILDV)
+	git push origin master -u --tags
 	echo Se acabo esto
 
 build: $(TARGET)
