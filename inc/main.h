@@ -36,7 +36,7 @@
 /*        DEFINES                                                    */
 /*********************************************************************/
 
-#define MAJOR_VER 43
+#define MAJOR_VER 44
 #define MINOR_VER 0
 #define PATCH_VER 0
 #define BUILD_VER 0
