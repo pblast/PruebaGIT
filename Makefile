@@ -100,7 +100,7 @@ gitcommit:
 	@echo  $(COMMITMSG)
 	$(shell git add .)
 	$(shell git status)
-	$(shell git commit -m "$COMMITMSG")
+	$(shell git commit -m "COMMITMSG")
 
 build: $(TARGET)
 
